@@ -41,17 +41,11 @@ jobs:
         cache: maven
         
     - name: Build with Maven
-      #run: mvn -B package --file pom.xml
-      run: mvn clean deploy --file pom.xml
+      run: mvn -B package --file pom.xml
+      #run: mvn clean deploy --file pom.xml
 
-    - name: Gsutil
-      run: gsutil ls gs://ac-rftexchange-qa-project-dataproc-staging/SparkJar/
-
-    - name: Current dir
-      run: pwd
-
-    - name: Listing
-      run: ls -al
+    - name: Copy to bucket
+      run: gsutil cp target/spark-mvn-scala-*-jar-with-dependencies.jar gs://${{ secrets.GCP_BUCKET_ID }}/SparkJar/
 
 
 
