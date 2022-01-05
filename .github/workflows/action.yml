@@ -40,18 +40,18 @@ jobs:
         distribution: 'adopt'
         cache: maven
         
-    #- name: Build with Maven
+    - name: Build with Maven
       #run: mvn -B package --file pom.xml
-      #run: mvn clean deploy --file pom.xml
+      run: mvn clean deploy --file pom.xml
 
     - name: Gsutil
-        run: gsutil ls gs://ac-rftexchange-qa-project-dataproc-staging/SparkJar/
+      run: gsutil ls gs://ac-rftexchange-qa-project-dataproc-staging/SparkJar/
 
     - name: Current dir
-        run: pwd
+      run: pwd
 
     - name: Listing
-        run: ls -al
+      run: ls -al
 
 
 
