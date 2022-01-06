@@ -19,6 +19,11 @@ object App extends App {
 
   df.count()
 
+  val ca = spark.read.json("gs://ac-rftexchange-qa-project-dataproc-staging/SparkJar/ca.json")
+  val pty = spark.read.json("gs://ac-rftexchange-qa-project-dataproc-staging/SparkJar/alt.json")
+
+  pty.count()
+
 
 
 }
