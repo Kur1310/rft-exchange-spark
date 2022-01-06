@@ -28,6 +28,7 @@ object App extends App {
 
   //pty.count()
   //pty.printSchema()
+  println(ca.count())
   println(pty.count())
 
 
