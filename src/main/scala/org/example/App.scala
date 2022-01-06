@@ -18,7 +18,8 @@ object App extends App {
 
 
   //df.count()
-  df.printSchema()
+  //df.printSchema()
+  println(df.count())
 
   println("Updated jar")
 
@@ -26,7 +27,8 @@ object App extends App {
   val pty = spark.read.format("org.apache.spark.sql.execution.datasources.v2.json.JsonDataSourceV2").load("gs://ac-rftexchange-qa-project-dataproc-staging/SparkJar/alt.json")
 
   //pty.count()
-  pty.printSchema()
+  //pty.printSchema()
+  println(pty.count())
 
 
 }
