@@ -47,9 +47,14 @@ jobs:
     - name: Copy to bucket
       run: gsutil cp target/spark-mvn-scala-*-jar-with-dependencies.jar gs://${{ secrets.GCP_BUCKET_ID }}/SparkJar/
 
+    - name: starting up the dataproc cluster
+      run: gcloud dataproc clusters start ${{ secrets.GCP_DATAPROC_CLUSTER }} --region=${{ secrets.GCP_REGION }}
+
     - name: Submit the job to dataproc cluster
       run : gcloud dataproc jobs submit spark --cluster=${{ secrets.GCP_DATAPROC_CLUSTER }} --region=${{ secrets.GCP_REGION }} --class=org.example.App --jars=gs://${{ secrets.GCP_BUCKET_ID }}/SparkJar/spark-mvn-scala-1.0-SNAPSHOT-jar-with-dependencies.jar
 
+    - name: stopping the dataproc cluster
+      run: gcloud dataproc clusters stop ${{ secrets.GCP_DATAPROC_CLUSTER }} --region=${{ secrets.GCP_REGION }}
 
 
 
