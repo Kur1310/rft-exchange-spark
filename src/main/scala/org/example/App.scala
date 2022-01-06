@@ -17,15 +17,16 @@ object App extends App {
   val df = spark.read.option("delimiter",";").format("org.apache.spark.sql.execution.datasources.v2.csv.CSVDataSourceV2").load("gs://ac-rftexchange-qa-project-dataproc-staging/SparkJar/data.csv")
 
 
-  df.count()
+  //df.count()
+  df.printSchema()
 
   println("Updated jar")
 
   val ca = spark.read.format("org.apache.spark.sql.execution.datasources.v2.json.JsonDataSourceV2").load("gs://ac-rftexchange-qa-project-dataproc-staging/SparkJar/ca.json")
   val pty = spark.read.format("org.apache.spark.sql.execution.datasources.v2.json.JsonDataSourceV2").load("gs://ac-rftexchange-qa-project-dataproc-staging/SparkJar/alt.json")
 
-  pty.count()
-
+  //pty.count()
+  pty.printSchema()
 
 
 }
