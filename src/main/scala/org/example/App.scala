@@ -31,5 +31,7 @@ object App extends App {
   println(ca.count())
   println(pty.count())
 
+  ca.write.parquet("gs://ac-rftexchange-qa-project-dataproc-staging/Output/customer.parquet")
+
 
 }
