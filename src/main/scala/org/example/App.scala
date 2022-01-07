@@ -26,6 +26,7 @@ object App extends App {
   val ca = spark.read.format("org.apache.spark.sql.execution.datasources.v2.json.JsonDataSourceV2").load("gs://ac-rftexchange-qa-project-dataproc-staging/SparkJar/ca.json")
   val pty = spark.read.format("org.apache.spark.sql.execution.datasources.v2.json.JsonDataSourceV2").load("gs://ac-rftexchange-qa-project-dataproc-staging/SparkJar/alt.json")
 
+  ca.show(false)
   //pty.count()
   //pty.printSchema()
   println(ca.count())
