@@ -31,7 +31,7 @@ object App extends App {
   println(ca.count())
   println(pty.count())
 
-  ca.write.format("org.apache.spark.sql.execution.datasources.v2.parquet.ParquetDataSourceV2").save("gs://ac-rftexchange-qa-project-dataproc-staging/Output/customer.parquet")
+  ca.repartition(10).write.format("org.apache.spark.sql.execution.datasources.v2.json.JsonDataSourceV2").save("gs://ac-rftexchange-qa-project-dataproc-staging/Output/customer.json")
 
 
 }
