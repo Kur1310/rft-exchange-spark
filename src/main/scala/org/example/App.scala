@@ -23,7 +23,7 @@ object App extends App {
 
   println("Updated jar")
 
-  val ca = spark.read.format("org.apache.spark.sql.execution.datasources.v2.json.JsonDataSourceV2").load("gs://ac-rftexchange-qa-project-dataproc-staging/SparkJar/ca.json")
+  val ca = spark.read.option("multiline",true).format("org.apache.spark.sql.execution.datasources.v2.json.JsonDataSourceV2").load("gs://ac-rftexchange-qa-project-dataproc-staging/SparkJar/ca.json")
   val pty = spark.read.format("org.apache.spark.sql.execution.datasources.v2.json.JsonDataSourceV2").load("gs://ac-rftexchange-qa-project-dataproc-staging/SparkJar/alt.json")
 
   ca.show(false)
