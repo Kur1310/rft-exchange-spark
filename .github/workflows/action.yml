@@ -52,6 +52,9 @@ jobs:
       #run: gcloud dataproc clusters start ${{ secrets.GCP_DATAPROC_CLUSTER }} --region=${{ secrets.GCP_REGION }}
       run: gcloud dataproc clusters start dataproc-cluster-dev --region=us-central1
 
+    - name: sleep
+      run: sleep 60
+
     - name: Submit the job to dataproc cluster
       #run : gcloud dataproc jobs submit spark --cluster=${{ secrets.GCP_DATAPROC_CLUSTER }} --region=${{ secrets.GCP_REGION }} --class=org.example.App --jars=gs://${{ secrets.GCP_BUCKET_ID }}/SparkJar/spark-mvn-scala-1.0-SNAPSHOT-jar-with-dependencies.jar
       #run : gcloud dataproc jobs submit spark --cluster=dataproc-cluster-dev --region=us-central1 --class=org.example.App --jars=gs://rtf-xchnage-spark-test/SparkJar/spark-mvn-scala-1.0-SNAPSHOT-jar-with-dependencies.jar
