@@ -9,6 +9,8 @@
     <scala.majorVersion>2.11</scala.majorVersion>
     <scala.minorVersion>.12</scala.minorVersion>
     <spark.version>2.4.8</spark.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
   <distributionManagement>
@@ -159,7 +161,7 @@
           </descriptorRefs>
           <archive>
             <manifest>
-              <mainClass>org.example.App</mainClass>
+              <mainClass>org.example.JavaExample</mainClass>
             </manifest>
           </archive>
         </configuration>
