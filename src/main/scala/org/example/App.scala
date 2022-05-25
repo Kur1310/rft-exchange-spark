@@ -32,7 +32,10 @@ object App extends App {
   println(ca.count())
   println(pty.count())
 
-  ca.repartition(10).write.mode("Overwrite").format("org.apache.spark.sql.execution.datasources.v2.json.JsonDataSourceV2").save("gs://rtf-xchnage-spark-test/Output/customer.json")
+  ca.repartition(10).write
+  .mode("Overwrite")
+  .format("org.apache.spark.sql.execution.datasources.v2.json.JsonDataSourceV2")
+  .save("gs://rtf-xchnage-spark-test/Output/customer.json")
 
 
 }
