@@ -2,6 +2,7 @@ package org.example;
 
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
+import org.apache.spark.sql.SaveMode;
 import org.apache.spark.sql.SparkSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,11 +16,24 @@ public class SparkJava {
         SparkSession spark =SparkSession.builder().appName("SparkJava").master(master).getOrCreate();
         LOGGER.info("Reading JSON file --Start");
         Dataset<Row> ca = spark.read().option("multiline",true).
-                format("org.apache.spark.sql.execution.datasources.json.JsonFileFormat").load("gs://rtf-xchnage-spark-test/SparkJar/ca.json");
+                format("org.apache.spark.sql.execution.datasources.json.JsonFileFormat")
+                //.load("/Users/keyurshah/IdeaProjects/rft-exchange-spark/ca.json");
+                .load("gs://rtf-xchnage-spark-test/SparkJar/ca.json");
+        Dataset<Row> customerDf = spark.read().option("multiline",true).
+                format("org.apache.spark.sql.execution.datasources.json.JsonFileFormat")
+                //.load("/Users/keyurshah/IdeaProjects/rft-exchange-spark/sparkjava.json");
+                .load("gs://rtf-xchnage-spark-test/SparkJar/sparkjava.json");
+        Dataset<Row> joinedDf = ca.join(customerDf, ca.col("id")
+                .equalTo(customerDf.col("id")), "left_outer");
         LOGGER.info("Reading JSON file --END");
-        ca.printSchema();
+        joinedDf = joinedDf.select(joinedDf.col("customerName").alias("CUS_NAME"),
+                joinedDf.col("customerEmail"),
+                joinedDf.col("businessUnitName"));
         LOGGER.info("Show JSON Dataset file");
-        ca.show();
+        joinedDf.show();
+        joinedDf.write().option("hearder", "true").mode(SaveMode.Overwrite).
+                csv("/Users/keyurshah/IdeaProjects/rft-exchange-spark//Output//");
+
 
     }
 }
