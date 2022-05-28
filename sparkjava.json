@@ -1,0 +1,19 @@
+{
+  "id": "61d6c0a85bc1cab2655904b6",
+  "customerName": "MR. XYZ",
+  "customerEmail": "xyz.@gmail.com",
+  "CustomerAddress": [
+    {
+    "permanentAddress": {
+      "streetNo": "Lane A",
+      "city": "Pune",
+      "state": "MH"
+    },
+      "localAddress": {
+        "streetNo": "Lane B",
+        "city": "Pune",
+        "state": "MH"
+      }
+    }
+  ]
+}
