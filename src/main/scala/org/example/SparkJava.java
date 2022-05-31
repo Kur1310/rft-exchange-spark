@@ -31,8 +31,10 @@ public class SparkJava {
                 joinedDf.col("businessUnitName"));
         LOGGER.info("Show JSON Dataset file");
         joinedDf.show();
-        joinedDf.write().option("hearder", "true").mode(SaveMode.Overwrite).
-                csv("/Users/keyurshah/IdeaProjects/rft-exchange-spark//Output//");
+        joinedDf.write()
+                .option("hearder", "true")
+                .mode("Overwrite")
+                .csv("gs://rtf-xchnage-spark-test/Output/resultCus.csv");
 
 
     }
