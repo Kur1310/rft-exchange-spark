@@ -33,6 +33,7 @@ public class SparkJava {
         joinedDf.show();
         joinedDf.write()
                 .option("hearder", "true")
+                .format("org.apache.spark.sql.execution.datasources.csv.CSVFileFormat")
                 .mode("Overwrite")
                 .csv("gs://rtf-xchnage-spark-test/Output/resultCus.csv");
 
