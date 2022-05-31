@@ -35,7 +35,7 @@ public class SparkJava {
                 .option("hearder", "true")
                 .format("org.apache.spark.sql.execution.datasources.csv.CSVFileFormat")
                 .mode("Overwrite")
-                .csv("gs://rtf-xchnage-spark-test/Output/resultCus.csv");
+                .save("gs://rtf-xchnage-spark-test/Output/resultCus.csv");
 
 
     }
