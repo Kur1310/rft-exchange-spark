@@ -25,5 +25,9 @@ public class JavaExample {
                                 .format("org.apache.spark.sql.execution.datasources.v2.json.JsonDataSourceV2")
                                 .load("gs://rtf-xchnage-spark-test/SparkJar/alt.json");
         System.out.println("The count is : " + ptyDF.count());
+
+        df.show();
+        caDF.show();
+        ptyDF.show();
     }
 }
